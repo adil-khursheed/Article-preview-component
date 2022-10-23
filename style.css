@@ -101,7 +101,7 @@ body{
     border-radius: 50%;
     background-color: var(--light-grayish-blue);
     cursor: pointer;
-
+    color: var(--very-dark-grayish-blue);
 }
 
 .btn:hover,
