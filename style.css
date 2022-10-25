@@ -22,6 +22,7 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 1rem;
 }
 
 .container{
@@ -29,6 +30,7 @@ body{
     display: flex;
     background-color: #fff;
     border-radius: 15px;
+    position: relative;
 }
 
 .img-col{
@@ -45,14 +47,14 @@ body{
 }
 
 .card-title{
-    font-size: 1.3rem;
+    font-size: clamp(1.1rem, 3vw, 1.3rem);
     color: var(--very-dark-grayish-blue);
     margin-bottom: 1rem;
     line-height: 1.5;
 }
 
 .card-para{
-    font-size: 0.85rem;
+    font-size: clamp(0.75rem, 3vw, 0.85rem);
     line-height: 1.5;
     color: var(--desaturated-dark-blue);
     margin-bottom: 1rem;
@@ -88,10 +90,6 @@ body{
     letter-spacing: 0.5px;
 }
 
-.share{
-    position: relative;
-}
-
 .btn{
     width: 35px;
     height: 35px;
@@ -102,6 +100,8 @@ body{
     background-color: var(--light-grayish-blue);
     cursor: pointer;
     color: var(--very-dark-grayish-blue);
+    position: relative;
+    z-index: 999;
 }
 
 .btn:hover,
@@ -113,15 +113,11 @@ body{
 
 .share-modal{
     background-color: var(--very-dark-grayish-blue);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     padding: 0.5rem 1.5rem;
     border-radius: 7px;
-    gap: 1rem;
     position: absolute;
-    top: -70px;
-    right: -80px;
+    bottom: 110px;
+    right: -30px;
     box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.1);
     display: none;
 }
@@ -140,6 +136,9 @@ body{
 
 .share-modal.active{
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
     animation: popup 0.2s ease-in;
 }
 
@@ -178,8 +177,53 @@ body{
 
 
 .attribution {
-    font-size: 11px; text-align: center;
+    font-size: 11px;
+    text-align: center;
+    margin-top: 1rem;
 }
 .attribution a { 
     color: hsl(228, 45%, 44%); 
 }
+
+
+@media screen and (max-width: 735px){
+    .container{
+        flex-direction: column;
+        max-width: 500px;
+        position: relative;
+    }
+
+    .img-col{
+        border-radius: 15px 15px 0 0;
+        min-height: 25vh;
+    }
+    
+    .text-col{
+        padding: 2rem 2rem 1rem 2rem;
+    }
+
+    .share-modal{
+        border-radius: 0 0 15px 15px;
+        position: absolute;
+        right: 0px;
+        bottom: 0px;
+        box-shadow: none;
+        width: 100%;
+        display: none;
+        z-index: 0;
+        padding: 1.2rem 1.5rem;
+    }
+
+    .share-modal::after{
+        display: none;
+    }
+
+    .share-modal.active{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 1rem;
+        animation: popup 0.2s ease-in;
+    }
+}
+
